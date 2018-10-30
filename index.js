@@ -19,7 +19,7 @@
  * 
  */
 const grid = [];
-const GRID_LENGTH = 3;
+const GRID_LENGTH = 4;
 let turn = 'X';
 let userWinAlert = 'User Wins !'
 let computerWinAlert = 'Computer Wins !'
@@ -86,8 +86,8 @@ function onBoxClick() {
     }
 }
 function computerTurn() {
-    let a = Math.floor(Math.random() * (3))
-    let b = Math.floor(Math.random() * (3))
+    let a = Math.floor(Math.random() * (GRID_LENGTH))
+    let b = Math.floor(Math.random() * (GRID_LENGTH))
     let gridValue = grid[a][b]
     if (gridValue === 0) {
         let newValue = 2
@@ -110,7 +110,7 @@ function checkSuccess(sender, oldValue) {
         }
     })
     for (let i = 0; i < GRID_LENGTH; i++) {
-        if ((grid[0][i] === grid[1][i]) && (grid[1][i] === grid[2][i])) {
+        if ((grid[0][i] === grid[1][i]) && (grid[1][i] === grid[2][i]) && (grid[2][i] === grid[3][i])) {
             if (grid[2][i] === 1) {
                 winner = 1
             }
@@ -119,7 +119,7 @@ function checkSuccess(sender, oldValue) {
             }
         }
     }
-    if ((grid[0][0] === grid[1][1]) && (grid[1][1] === grid[2][2])) {
+    if ((grid[0][0] === grid[1][1]) && (grid[1][1] === grid[2][2]) && (grid[2][2] === grid[3][3])) {
         if (grid[2][2] === 1) {
             winner = 1
         }
@@ -127,11 +127,11 @@ function checkSuccess(sender, oldValue) {
             winner = 2
         }
     }
-    if ((grid[0][2] === grid[1][1]) && (grid[1][1] === grid[2][0])) {
-        if (grid[2][0] === 1) {
+    if ((grid[0][3] === grid[1][2]) && (grid[1][2] === grid[2][1]) && (grid[2][1] === grid[3][0])) {
+        if (grid[3][0] === 1) {
             winner = 1
         }
-        if (grid[2][0] === 2) {
+        if (grid[3][0] === 2) {
             winner = 2
         }
     }
